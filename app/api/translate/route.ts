@@ -25,7 +25,7 @@ export async function POST(req: Request, companyName: boolean) {
       return new Response("OpenAI credentials not found.", { status: 500 });
     }
 
-    const systemPrompt = "You are a helpful assistant that translates text to English. Your response should only contain translated text.";
+    const systemPrompt = "You are a helpful assistant that translates text to English. Your response should only contain translated text. If the text is already in English keep the original text.";
     const userPrompt = companyName 
       ? `Translate this company name to English:\n\n${text}, make sure to translit correctly, be creative` 
       : `Translate this text to English:\n\n${text}`;
