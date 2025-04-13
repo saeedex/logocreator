@@ -54,7 +54,7 @@ export default function RootLayout({
           <meta name="color-scheme" content="dark" />
         </head>
         <body
-          className={`${jura.variable} dark min-h-full bg-[#343434] font-jura antialiased`}
+          className={`${jura.variable} dark min-h-full bg-white font-jura antialiased`}
         >
           {children}
           <Toaster />
