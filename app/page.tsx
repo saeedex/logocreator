@@ -5,10 +5,8 @@ import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { motion } from "framer-motion"
 import { Textarea } from "@/app/components/ui/textarea"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/hooks/use-toast"
 import { SignInButton, useUser } from "@clerk/nextjs"
-import * as RadioGroup from "@radix-ui/react-radio-group"
 import { DownloadIcon, RefreshCwIcon } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
@@ -23,14 +21,14 @@ import InfoTooltip from "./components/InfoToolTip"
 //   { name: "Stack", icon: "/stack.svg" },
 // ];
 
-const logoStyles = [
-  { name: "Tech", icon: "/tech.svg" },
-  { name: "Flashy", icon: "/flashy.svg" },
-  { name: "Modern", icon: "/modern.svg" },
-  { name: "Playful", icon: "/playful.svg" },
-  { name: "Abstract", icon: "/abstract.svg" },
-  { name: "Minimal", icon: "/minimal.svg" },
-]
+// const logoStyles = [
+//   { name: "Tech", icon: "/tech.svg" },
+//   { name: "Flashy", icon: "/flashy.svg" },
+//   { name: "Modern", icon: "/modern.svg" },
+//   { name: "Playful", icon: "/playful.svg" },
+//   { name: "Abstract", icon: "/abstract.svg" },
+//   { name: "Minimal", icon: "/minimal.svg" },
+// ]
 
 const primaryColors = [
   { name: "Blue", color: "#0F6FFF" },
@@ -54,9 +52,9 @@ export default function Page() {
   })
   const [companyName, setCompanyName] = useState("")
   // const [selectedLayout, setSelectedLayout] = useState(layouts[0].name);
-  const [selectedStyle, setSelectedStyle] = useState(logoStyles[0].name)
-  const [selectedPrimaryColor, setSelectedPrimaryColor] = useState(primaryColors[0].name)
-  const [selectedBackgroundColor, setSelectedBackgroundColor] = useState(backgroundColors[0].name)
+  // const [selectedStyle, setSelectedStyle] = useState(logoStyles[0].name)
+  // const [selectedPrimaryColor, setSelectedPrimaryColor] = useState(primaryColors[0].name)
+  // const [selectedBackgroundColor, setSelectedBackgroundColor] = useState(backgroundColors[0].name)
   const [additionalInfo, setAdditionalInfo] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [generatedImage1, setGeneratedImage1] = useState<string | null>(null)
@@ -66,11 +64,11 @@ export default function Page() {
 
   const { isSignedIn, isLoaded, user } = useUser()
 
-  const handleAPIKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value
-    setUserAPIKey(newValue)
-    localStorage.setItem("userAPIKey", newValue)
-  }
+  // const handleAPIKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const newValue = e.target.value
+  //   setUserAPIKey(newValue)
+  //   localStorage.setItem("userAPIKey", newValue)
+  // }
 
   async function generateLogo() {
     if (!isSignedIn) {
@@ -106,7 +104,7 @@ export default function Page() {
         body: JSON.stringify({
           userAPIKey,
           companyName: tname,
-          selectedStyle,
+          selectedStyle: "Abstract", 
           selectedPrimaryColor: primaryColor,
           selectedBackgroundColor: backgroundColor,
           additionalInfo: tinfo,
